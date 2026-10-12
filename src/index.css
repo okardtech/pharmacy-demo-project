@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (RGB triplets so Tailwind can apply alpha) */
+:root {
+  --primary: 15 118 110; --primary-soft: 204 251 241; --on-primary: 255 255 255;
+  --accent: 30 64 175; --bg: 248 250 252; --surface: 255 255 255; --surface-2: 241 245 249;
+  --border: 226 232 240; --text: 15 23 42; --muted: 100 116 139;
+  --success: 22 163 74; --warning: 217 119 6; --danger: 220 38 38;
+  color-scheme: light;
+}
+.dark {
+  --primary: 45 212 191; --primary-soft: 19 78 74; --on-primary: 4 47 46;
+  --accent: 147 197 253; --bg: 11 18 32; --surface: 17 24 39; --surface-2: 23 32 50;
+  --border: 31 41 55; --text: 229 231 235; --muted: 148 163 184;
+  --success: 74 222 128; --warning: 251 191 36; --danger: 248 113 113;
+  color-scheme: dark;
+}
+
+html { font-size: 15px; }
+body { @apply bg-bg text-text antialiased; line-height: 1.6; }
+:lang(lo) body, html[lang='lo'] body { font-family: 'Noto Sans Lao', Inter, system-ui, sans-serif; }
+.num { font-family: Inter, system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+
+*:focus-visible { outline: 2px solid rgb(var(--primary)); outline-offset: 2px; border-radius: 6px; }
+* { transition-duration: 150ms; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+.skeleton { @apply rounded-ctl bg-surface-2; animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .5; } }
+.leaflet-container { font: inherit; border-radius: 12px; z-index: 0; }
+.dark .leaflet-tile { filter: brightness(.7) invert(1) contrast(.9) hue-rotate(200deg) saturate(.4); }
+
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; left: 0; top: 0; width: 80mm; }
+}

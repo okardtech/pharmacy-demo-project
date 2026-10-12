@@ -1,0 +1,11 @@
+node_modules
+dist
+e2e/shots
+test-results
+playwright-report
+
+pharmacy-regulatory-platform-PROMPT.md
+requirement.pdf
+
+.env
+.env.production
